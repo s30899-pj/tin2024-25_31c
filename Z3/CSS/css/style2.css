@@ -14,11 +14,11 @@ p{
 }
 
 h1{
-  font-size: 60px;
+  font-size: 45px;
 }
 
 h2{
-  font-size: 40px;
+  font-size: 30px;
 }
 
 #all{
@@ -30,18 +30,15 @@ h2{
   padding:0;
   margin:0;
   background-color:#FFF;
-  font-size:18px;
-  height:2em;
+  font-size:20px;
   line-height:2em;
   text-align:center;
   width: 100%;
-  height: 50px;
+  height: 55px;
   font-family: Arial, serif;
 }
 
 #contents a{
-  display: block;
-  float: left;
   font-size: 20px ;
   text-align: left;
   text-decoration: none;
@@ -52,20 +49,50 @@ h2{
   list-style-type: none;
   padding: 0;
   margin: 0;
+  display: flex;
+}
+
+#categories{
+  position: relative;
 }
 
 #categories a{
-  padding: 10px 10px;
+  display: block;
+  padding: 10px 20px;
   font-weight: bold;
+  color: black;
 }
 
 #categories a:hover{
   background-color: #DCDCDC;
+  color: blue;
+}
+
+#categories > li:hover > #subcategories {
+  display: block;
+}
+
+#subcategories{
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: #FFF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  min-width: 250px;
+}
+
+#subcategories li {
+  list-style-type: none;
+  text-align: left;
 }
 
 #subcategories a{
-  padding-left: 40px;
-  font-weight: lighter;
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: black;
+  font-weight: normal;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #subcategories a:hover{
@@ -73,28 +100,41 @@ h2{
 }
 
 #main{
-  float: left;
+  display: flex;
   width: 100%;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
 #main p{
-  font-size: 25px;
+  font-size: 20px;
+}
+
+#section1, #section2{
+  display: flex;
+  flex-direction: column;
 }
 
 #section1{
   width: 44%;
   background-color: white;
-  float: left;
   padding: 15px 1.5%;
   margin: 10px 1.5%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#section1 img{
+  width: 100%;
+  height: 400px;
+  display: block;
 }
 
 #section2{
   width: 44%;
   background-color: white;
-  float: left;
   padding: 15px 1.5%;
   margin: 10px 1.5%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #forms{
@@ -102,30 +142,29 @@ h2{
 }
 
 #data{
-  width: 90%;
-  padding: 25px 5%;
-  float: left;
+  width: 94%;
+  padding: 15px 3%;
 }
 
 #data textarea{
-  font-size: 20px;
+  font-size: 15px;
   min-height: 100px;
-  min-width: 350px;
+  width: 100%;
 }
 
 #data input{
   min-height: 25px;
-  min-width: 150px;
+  width: 100%;
 }
 
 #choose{
-  width: 90%;
-  padding: 25px 5%;
+  width: 94%;
+  padding: 25px 3%;
   font-size: 25px;
 }
 
 #choose select{
-  font-size: 20px;
+  font-size: 15px;
   min-height: 30px;
   min-width: 150px;
 }
@@ -147,23 +186,45 @@ h2{
 #scala th, td{
   padding: 15px;
   text-align: center;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 #scala td{
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #E0E0E0;
 }
 
-#options{
+#options {
   background-color: white;
-  height: 150px;
+  height: 70px;
   width: 100%;
-  float: left;
+  display: table;
+  padding-top: 15px;
+  border-top: 2px solid #DCDCDC;
 }
 
-#options p{
-  margin: 15px;
-  float: left;
-  text-align: center;
-  font-size: 30px;
+#options p {
+  margin: 0;
+  text-align: left;
+  font-size: 20px;
+  color: grey;
+  padding-left: 40px;
+  display: table-cell;
+  width: 33.33%;
+  border-left: 1px solid #E0E0E0;
+  line-height: 70px
+}
+
+#options p:first-child {
+  border-left: none;
+}
+
+@media (max-width: 1000px) {
+  #main {
+    flex-direction: column;
+  }
+
+  #section1, #section2 {
+    width: 90%;
+    margin: 10px auto;
+  }
 }
