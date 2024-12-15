@@ -26,12 +26,12 @@ class Car {
     updatePriceMileage(newYear, newMileage){
         this.year = newYear;
         this.mileage = newMileage;
-        
-        
+        this.end_price = this.starting_price;
+
         this.reductionPriceDate();
         this.reductionPriceMileage();
     }
-    
+
 }
 
 function addCarIfEligible(cars) {
@@ -54,7 +54,7 @@ function increaseCarYear (cars) {
         console.error("Błąd: cars nie jest tablicą!");
         return;
     }
-    
+
     cars.forEach(car => {
         car.year += 1;
         console.log(`Zaaktualizowano rok auta: ${JSON.stringify(car)}`);
@@ -76,7 +76,7 @@ car.updatePriceMileage(2016, 160000);
 console.log(`Cena koncowa po aktualizacji: ${car.end_price}`);
 
 const cars = [
-    new Car(2000, 250000, 25000),
+    new Car(2000, 250000, 9000),
     new Car(2005, 190000, 40000),
     new Car(2010, 120000, 65000),
 ]
@@ -86,7 +86,7 @@ const eligibleCars = addCarIfEligible(cars);
 console.log("Tablica samochodow spelniajacych kryteria:");
 console.log(eligibleCars);
 
-increaseCarYear(cars);
+increaseCarYear(eligibleCars);
 
 console.log("Tablica aut po zwiekszeniu roku:");
-console.log(cars);
+console.log(eligibleCars);
