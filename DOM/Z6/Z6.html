@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lightbox</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style6.css" rel="stylesheet">
+    <script defer src="Z6.js"></script>
+</head>
+
+<body>
+<h1>M3 Generations</h1>
+<div class="row">
+    <div class="column">
+        <img src="Images/E30.jpg" onclick="openModal(); currentSlide(1)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Images/E36.jpeg" onclick="openModal(); currentSlide(2)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Images/E92.jpg" onclick="openModal(); currentSlide(3)" class="hover-shadow cursor">
+    </div>
+    <div class="column">
+        <img src="Images/F80.jpg" onclick="openModal(); currentSlide(3)" class="hover-shadow cursor">
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+    <span class="close cursor" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+
+        <div class="mySlides">
+            <div class="numberText">1 / 4</div>
+            <img src="Images/E30.jpg">
+        </div>
+        <div class="mySlides">
+            <div class="numberText">2 / 4</div>
+            <img src="Images/E36.jpeg">
+        </div>
+        <div class="mySlides">
+            <div class="numberText">3 / 4</div>
+            <img src="Images/E92.jpg">
+        </div>
+        <div class="mySlides">
+            <div class="numberText">4 / 4</div>
+            <img src="Images/F80.jpg">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        <div class="caption-container">
+            <p id="caption"></p>
+        </div>
+
+        <div class="column">
+            <img class="demo cursor" src="Images/E30.jpg" onclick="currentSlide(1)" alt="BMW E30 M3">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="Images/E36.jpeg" onclick="currentSlide(2)" alt="BMW E36 M3 GT">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="Images/E92.jpg" onclick="currentSlide(3)" alt="BMW E92 M3">
+        </div>
+        <div class="column">
+            <img class="demo cursor" src="Images/F80.jpg" onclick="currentSlide(4)" alt="BMW F80 M3">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

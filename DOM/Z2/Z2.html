@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style2.css">
+    <script src="Z2.js" defer></script>
+</head>
+<body>
+<div class="calculator">
+    <div class="result-container">
+        <div class="result" id="result">40</div>
+    </div>
+
+    <div class="inputs">
+        <div>
+            <label for="firstNumber">Pierwsza liczba</label>
+            <input type="number" id="firstNumber" class="number-input">
+        </div>
+        <div>
+            <label for="secondNumber">Druga liczba</label>
+            <input type="number" id="secondNumber" class="number-input">
+        </div>
+        <div>
+            <label for="operation">Działanie</label>
+            <select id="operation" class="operation-select">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
+        </div>
+        <button id="calculate" class="calculate-button">Oblicz</button>
+    </div>
+</div>
+</body>
+</html>
