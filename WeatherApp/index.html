@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather App</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/cards/favorite.css" rel="stylesheet">
+    <link href="css/cards/search.css" rel="stylesheet">
+    <link href="css/cards/location.css" rel="stylesheet">
+    <link href="css/cards/map.css" rel="stylesheet">
+    <link href="css/cards/alerts.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+</head>
+<body>
+    <main>
+        <div id="cards-container">
+            <div class="card" id="card-favorite">
+
+            </div>
+
+            <div class="card" id="card-search">
+                <form action="">
+                    <input type="text" autocomplete="off" id="valueSearch">
+                    <button>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+
+                <section class="result">
+                    <figure class="name" id="search-city">
+                        <figcaption>London</figcaption>
+                        <img src="https://flagsapi.com/GB/shiny/32.png" alt="">
+                    </figure>
+                    <figure class="temperature" id="search-temperature">
+                        <img src="http://openweathermap.org/img/wn/10d@4x.png" alt="">
+                        <figcaption>
+                            <span>31</span>
+                        </figcaption>
+                    </figure>
+                    <p class="search-description">
+                        Overcast clouds
+                    </p>
+
+                    <ul>
+                        <li>
+                            <span>Clouds</span>
+                            <i class="fa-solid fa-cloud"></i>
+                            <span id="search-clouds">98</span>%
+                        </li>
+                        <li>
+                            <span>Humidity</span>
+                            <i class="fa-solid fa-droplet"></i>
+                            <span id="search-humidity">55</span>%
+                        </li>
+                        <li>
+                            <span>Pressure</span>
+                            <i class="fa-solid fa-gauge"></i>
+                            <span id="search-pressure">1001</span>hPa
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <div class="card" id="card-location">
+                <section class="result">
+                    <figure class="name" id="city">
+                        <figcaption>London</figcaption>
+                        <img src="https://flagsapi.com/GB/shiny/32.png" alt="">
+                    </figure>
+                    <figure class="temperature" id="temperature">
+                        <img src="http://openweathermap.org/img/wn/10d@4x.png" alt="">
+                        <figcaption>
+                            <span>31</span>
+                        </figcaption>
+                    </figure>
+                    <p class="description">
+                        Overcast clouds
+                    </p>
+
+                    <ul>
+                        <li>
+                            <span>Clouds</span>
+                            <i class="fa-solid fa-cloud"></i>
+                            <span id="clouds">98</span>%
+                        </li>
+                        <li>
+                            <span>Humidity</span>
+                            <i class="fa-solid fa-droplet"></i>
+                            <span id="humidity">55</span>%
+                        </li>
+                        <li>
+                            <span>Pressure</span>
+                            <i class="fa-solid fa-gauge"></i>
+                            <span id="pressure">1001</span>hPa
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <div class="card" id="card-map">
+
+            </div>
+
+            <div class="card" id="card-alerts">
+
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <section id="nav-bar">
+            <ul>
+                <li id="nav-favorite">
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-star"></i>
+                        </span>
+                        <span class="text">Favorite</span>
+                    </a>
+                </li>
+                <li id="nav-search">
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </span>
+                        <span class="text">Search</span>
+                    </a>
+                </li>
+                <li id="nav-location">
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-location-crosshairs"></i>
+                        </span>
+                        <span class="text">Current location</span>
+                    </a>
+                </li>
+                <li id="nav-map">
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-map"></i>
+                        </span>
+                        <span class="text">Map</span>
+                    </a>
+                </li>
+                <li id="nav-alerts">
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-bell"></i>
+                        </span>
+                        <span class="text">Alerts</span>
+                    </a>
+                </li>
+                <div class="indicator"></div>
+            </ul>
+        </section>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

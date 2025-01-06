@@ -1,0 +1,65 @@
+#card-location .result {
+    padding-top: 20px;
+    text-align: center;
+}
+
+#card-location .result .name {
+    font-weight: bold;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#card-location .temperature img {
+    width: 150px;
+    filter: drop-shadow(
+            0 10px 50px #000
+    );
+}
+
+#card-location .temperature figcaption {
+    font-size: 3em;
+}
+
+#card-location .description {
+    padding: 10px 0 30px;
+}
+
+#card-location .result ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+
+}
+
+#card-location .result li {
+    background-color: #fd8b61;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px 10px;
+    background-image: linear-gradient(
+            to bottom,
+            transparent 50%,
+            #0003 50%
+    );
+    font-weight: bold;
+    font-size: small;
+    transition: background-image 0.5s ease
+}
+
+#card-location .result li i {
+    font-size: 2em;
+    display: block !important;
+    margin: 20px 0;
+}
+
+#card-location .result li:nth-child(2) {
+    background-color: mediumpurple;
+}
+
+#card-location .result li:nth-child(3) {
+    background-color: royalblue;
+}
