@@ -1,3 +1,12 @@
+const valueSearchInput = document.getElementById("valueSearch");
+
+valueSearchInput.addEventListener("input", () => {
+    const currentValue = valueSearchInput.value.trim();
+    if (currentValue.length > 0) {
+        valueSearchInput.value = currentValue.charAt(0).toUpperCase() + currentValue.slice(1);
+    }
+});
+
 //
 //Switch cards
 //

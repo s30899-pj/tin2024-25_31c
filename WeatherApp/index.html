@@ -12,7 +12,7 @@
     <link href="css/cards/alerts.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
 </head>
 <body>
     <main>
@@ -23,7 +23,7 @@
 
             <div class="card" id="card-search">
                 <div class="search-bar">
-                    <form action="">
+                    <form>
                         <input type="text" autocomplete="off" id="valueSearch">
                         <button>
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -34,7 +34,7 @@
                     </button>
                 </div>
 
-                <section class="result">
+                <div class="result">
                     <figure class="name" id="search-city">
                         <figcaption>London</figcaption>
                         <img src="https://flagsapi.com/GB/shiny/32.png" alt="">
@@ -66,11 +66,11 @@
                             <span id="search-pressure">1001</span>hPa
                         </li>
                     </ul>
-                </section>
+                </div>
             </div>
 
             <div class="card" id="card-location">
-                <section class="result">
+                <div class="result">
                     <figure class="name" id="city">
                         <figcaption>London</figcaption>
                         <img src="https://flagsapi.com/GB/shiny/32.png" alt="">
@@ -102,7 +102,7 @@
                             <span id="pressure">1001</span>hPa
                         </li>
                     </ul>
-                </section>
+                </div>
             </div>
 
             <div class="card" id="card-map">
@@ -132,7 +132,7 @@
     </main>
 
     <footer>
-        <section id="nav-bar">
+        <div id="nav-bar">
             <ul>
                 <li id="nav-favorite">
                     <a href="#">
@@ -174,9 +174,9 @@
                         <span class="text">Alerts</span>
                     </a>
                 </li>
-                <div class="indicator"></div>
+                <li class="indicator"></li>
             </ul>
-        </section>
+        </div>
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>

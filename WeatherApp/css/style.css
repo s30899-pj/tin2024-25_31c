@@ -154,7 +154,7 @@ footer li.active a .text {
     transform: translateY(5px);
 }
 
-footer .indicator {
+footer ul li.indicator {
     position: absolute;
     top: -26%;
     width: 50px;
@@ -164,10 +164,11 @@ footer .indicator {
     border-radius: 50%;
     border: 2px solid #f7f7f7;
     transition: 0.5s;
+    z-index: 0;
 }
 
-footer .indicator:before,
-.indicator:after{
+footer ul li.indicator:before,
+footer ul li.indicator:after {
     content: "";
     position: absolute;
     top: 50%;
