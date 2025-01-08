@@ -96,6 +96,10 @@ footer .icon, .text {
     color: #222327;
 }
 
+footer .text {
+    user-select: none;
+}
+
 footer ul {
     display: flex;
     width: 250px;

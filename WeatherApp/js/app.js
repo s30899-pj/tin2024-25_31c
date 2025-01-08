@@ -27,6 +27,14 @@ const showCard = (cardId) => {
                 favoriteIcon.classList.remove('show');
             }
         }
+
+        if (cardId === 'card-map') {
+            loadWeatherMapForLocation();
+        }
+
+        if (cardId === 'card-alerts') {
+            loadWeatherAlerts();
+        }
     }
 };
 
@@ -50,7 +58,6 @@ navItems.forEach(item => {
             showCard('card-location');
         } else if (clickedId === 'nav-map') {
             showCard('card-map');
-            loadWeatherMapForLocation();
         } else if (clickedId === 'nav-alerts') {
             showCard('card-alerts');
         }
@@ -337,39 +344,91 @@ document.getElementById('favorite-list').addEventListener('click', (e) => {
 });
 
 //
-//Weather map genereation
+//Weather map generation
 //
 let map;
 
-const loadWeatherMapForLocation = () => {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                const latitude = position.coords.latitude;
-                const longitude = position.coords.longitude;
+const setupHamburgerMenu = () => {
+    const hamburgerButton = document.getElementById("hamburgerButton");
+    const layerControl = document.getElementById("layerControl");
 
-                if (map) {
-                    map.setView([latitude, longitude], 10);
-                } else {
-                    initWeatherMap(latitude, longitude);
-                }
-            },
-            (error) => {
-                console.error(`Location error: ${error.message}`);
-                alert('Failed to retrieve location.');
+    if (hamburgerButton) {
+        hamburgerButton.addEventListener("click", () => {
+            hamburgerButton.classList.toggle("open");
+            if (hamburgerButton.classList.contains("open")) {
+                layerControl.style.display = "block";
+            } else {
+                layerControl.style.display = "none";
             }
-        );
-    } else {
-        console.error("Geolocation is not supported by this browser.");
-        alert('Geolocation is not available in this browser.');
+        });
+    }
+
+    const closeHamburgerMenu = () => {
+        if (hamburgerButton && hamburgerButton.classList.contains("open")) {
+            hamburgerButton.classList.remove("open");
+            layerControl.style.display = "none";
+        }
+    };
+
+    const tempLayerCheckbox = document.getElementById("tempLayer");
+    const windLayerCheckbox = document.getElementById("windLayer");
+    const precipitationLayerCheckbox = document.getElementById("precipitationLayer");
+    const cloudsLayerCheckbox = document.getElementById("cloudsLayer");
+    const pressureLayerCheckbox = document.getElementById("pressureLayer");
+
+    const onLayerChange = () => {
+        closeHamburgerMenu();
+    };
+
+    if (tempLayerCheckbox) tempLayerCheckbox.addEventListener("change", onLayerChange);
+    if (windLayerCheckbox) windLayerCheckbox.addEventListener("change", onLayerChange);
+    if (precipitationLayerCheckbox) precipitationLayerCheckbox.addEventListener("change", onLayerChange);
+    if (cloudsLayerCheckbox) cloudsLayerCheckbox.addEventListener("change", onLayerChange);
+    if (pressureLayerCheckbox) pressureLayerCheckbox.addEventListener("change", onLayerChange);
+};
+
+
+const loadWeatherMapForLocation = () => {
+    const cardMap = document.getElementById('card-map');
+    const isCardMapActive = cardMap && cardMap.classList.contains('active');
+
+    if (isCardMapActive) {
+        if (map) {
+            map.remove();
+            map = null;
+        }
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+
+                    initWeatherMap(latitude, longitude);
+                },
+                (error) => {
+                    console.error(`Location error: ${error.message}`);
+                    alert('Failed to retrieve location.');
+                }
+            );
+        } else {
+            console.error("Geolocation is not supported by this browser.");
+            alert('Geolocation is not available in this browser.');
+        }
     }
 };
+
+setupHamburgerMenu();
 
 const initWeatherMap = (latitude, longitude) => {
     const leafletScript = document.createElement('script');
     leafletScript.src = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js";
 
     leafletScript.onload = () => {
+        if (map) {
+            map.remove();
+        }
+
         map = L.map('weather-map', {
             zoomControl: false,
             maxBounds: [
@@ -427,57 +486,63 @@ const initWeatherMap = (latitude, longitude) => {
 
         temperatureLayer.addTo(map);
 
-        const tempLayerCheckbox = document.getElementById("tempLayer");
-        if (tempLayerCheckbox) {
-            tempLayerCheckbox.checked = true;
-        }
+        const changeLayer = (selectedLayer) => {
+            Object.values(layers).forEach(layer => map.removeLayer(layer));
+            if (layers[selectedLayer]) layers[selectedLayer].addTo(map);
+        };
 
+        const updateCheckboxes = (selectedCheckbox) => {
+            const checkboxes = document.querySelectorAll("#layerControl input[type='checkbox']");
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            selectedCheckbox.checked = true;
+        };
+
+        const tempLayerCheckbox = document.getElementById("tempLayer");
         const windLayerCheckbox = document.getElementById("windLayer");
         const precipitationLayerCheckbox = document.getElementById("precipitationLayer");
         const cloudsLayerCheckbox = document.getElementById("cloudsLayer");
         const pressureLayerCheckbox = document.getElementById("pressureLayer");
 
+        if (tempLayerCheckbox) tempLayerCheckbox.checked = true;
+        if (windLayerCheckbox) windLayerCheckbox.checked = false;
+        if (precipitationLayerCheckbox) precipitationLayerCheckbox.checked = false;
+        if (cloudsLayerCheckbox) cloudsLayerCheckbox.checked = false;
+        if (pressureLayerCheckbox) pressureLayerCheckbox.checked = false;
+
+        tempLayerCheckbox.addEventListener("change", () => {
+            if (tempLayerCheckbox.checked) {
+                updateCheckboxes(tempLayerCheckbox);
+                changeLayer('temperature');
+            }
+        });
+
         windLayerCheckbox.addEventListener("change", () => {
             if (windLayerCheckbox.checked) {
-                windLayer.addTo(map);
-            } else {
-                windLayer.removeFrom(map);
+                updateCheckboxes(windLayerCheckbox);
+                changeLayer('wind');
             }
         });
 
         precipitationLayerCheckbox.addEventListener("change", () => {
             if (precipitationLayerCheckbox.checked) {
-                precipitationLayer.addTo(map);
-            } else {
-                precipitationLayer.removeFrom(map);
+                updateCheckboxes(precipitationLayerCheckbox);
+                changeLayer('precipitation');
             }
         });
 
         cloudsLayerCheckbox.addEventListener("change", () => {
             if (cloudsLayerCheckbox.checked) {
-                cloudsLayer.addTo(map);
-            } else {
-                cloudsLayer.removeFrom(map);
+                updateCheckboxes(cloudsLayerCheckbox);
+                changeLayer('clouds');
             }
         });
 
         pressureLayerCheckbox.addEventListener("change", () => {
             if (pressureLayerCheckbox.checked) {
-                pressureLayer.addTo(map);
-            } else {
-                pressureLayer.removeFrom(map);
-            }
-        });
-        
-        const hamburgerButton = document.getElementById("hamburgerButton");
-        const layerControl = document.getElementById("layerControl");
-
-        hamburgerButton.addEventListener("click", () => {
-            hamburgerButton.classList.toggle("open");
-            if (hamburgerButton.classList.contains("open")) {
-                layerControl.style.display = "block";
-            } else {
-                layerControl.style.display = "none";
+                updateCheckboxes(pressureLayerCheckbox);
+                changeLayer('pressure');
             }
         });
 
@@ -511,6 +576,102 @@ const fetchTemperatureAndAddMarker = (lat, lon) => {
 //
 //Weather alerts system
 //
+const checkWeatherAlerts = (data) => {
+    const alertsList = document.getElementById('alerts-list');
+    alertsList.innerHTML = '';
 
+    let alertsAdded = false;
+
+    const currentHour = new Date().getHours();
+
+    if (data.main.temp < 0) {
+        createAlert('alert-temp-below-zero', 'Warning: The temperature has dropped below zero!');
+        alertsAdded = true;
+    }
+
+    if (data.main.temp > 30) {
+        createAlert('alert-temp-above-30', 'The temperature has risen above 30°C. Remember to stay hydrated!');
+        alertsAdded = true;
+    }
+
+    if (data.wind.speed > 27.8) {
+        createAlert('alert-wind', 'Alert: Winds are stronger than 100 km/h!');
+        alertsAdded = true;
+    }
+
+    if (data.weather.some(weather => weather.main === 'Rain')) {
+        createAlert('alert-rain', 'Warning: Heavy rain is forecasted.');
+        if (data.weather.some(weather => weather.main === 'Rain' && weather.description === 'heavy rain')) {
+            createAlert('alert-rain-now', 'It’s raining right now, take an umbrella!');
+        }
+        alertsAdded = true;
+    }
+
+    if (data.weather.some(weather => weather.main === 'Thunderstorm')) {
+        createAlert('alert-storm', 'Warning: A storm is approaching. Please exercise caution.');
+        alertsAdded = true;
+    }
+
+    if (data.weather.some(weather => weather.main === 'Snow')) {
+        createAlert('alert-snow', 'High risk of snow showers in the near future.');
+        alertsAdded = true;
+    }
+
+    if (data.weather.some(weather => weather.main === 'Clear')) {
+        if (currentHour < 6 || currentHour > 18) {
+            createAlert('alert-sunny', 'The sky is clear tonight, expect calm weather.');
+        } else {
+            createAlert('alert-sunny', 'Today’s weather is sunny, perfect for a walk!');
+        }
+        if (data.main.temp > 25) {
+            createAlert('alert-suncream', 'Don’t forget to use sunscreen today!');
+        }
+        alertsAdded = true;
+    }
+
+    if (!alertsAdded) {
+        createAlert('alert-default', 'No significant weather alerts. The weather is calm!');
+    }
+};
+
+
+const createAlert = (className, message) => {
+    const alertList = document.getElementById('alerts-list');
+    const li = document.createElement('li');
+    li.classList.add('alert', className);
+    li.textContent = message;
+    alertList.appendChild(li);
+};
+
+
+const loadWeatherAlerts = () => {
+    const cardAlerts = document.getElementById('card-alerts');
+    const isCardAlertsActive = cardAlerts && cardAlerts.classList.contains('active');
+
+    if (isCardAlertsActive) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+
+                    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`)
+                        .then(response => response.json())
+                        .then(data => {
+                            checkWeatherAlerts(data);
+                        })
+                        .catch(error => console.error("Error fetching weather alerts:", error));
+                },
+                (error) => {
+                    console.error(`Location error: ${error.message}`);
+                    alert('Failed to retrieve location for alerts.');
+                }
+            );
+        } else {
+            console.error("Geolocation is not supported by this browser.");
+            alert('Geolocation is not available in this browser.');
+        }
+    }
+};
 
 loadConfig();
