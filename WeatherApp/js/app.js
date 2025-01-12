@@ -1,7 +1,7 @@
 const valueSearchInput = document.getElementById("valueSearch");
 
 valueSearchInput.addEventListener("input", () => {
-    const currentValue = valueSearchInput.value.trim();
+    const currentValue = valueSearchInput.value;
     if (currentValue.length > 0) {
         valueSearchInput.value = currentValue.charAt(0).toUpperCase() + currentValue.slice(1);
     }
@@ -151,8 +151,6 @@ const updateWeatherUI = (data) => {
         pressure.innerText = data.main.pressure;
     }
 };
-
-
 
 let apiKey = '';
 
@@ -458,31 +456,31 @@ const initWeatherMap = (latitude, longitude) => {
         const temperatureLayer = L.tileLayer(`https://{s}.tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${apiKey}`, {
             attribution: '&copy; <a href="https://www.openweathermap.org/copyright">OpenWeatherMap</a> contributors',
             maxZoom: 19,
-            opacity: 0.7
+            opacity: 0.8
         });
 
         const windLayer = L.tileLayer(`https://{s}.tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=${apiKey}`, {
             attribution: '&copy; <a href="https://www.openweathermap.org/copyright">OpenWeatherMap</a> contributors',
             maxZoom: 19,
-            opacity: 0.7
+            opacity: 0.8
         });
 
         const precipitationLayer = L.tileLayer(`https://{s}.tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=${apiKey}`, {
             attribution: '&copy; <a href="https://www.openweathermap.org/copyright">OpenWeatherMap</a> contributors',
             maxZoom: 19,
-            opacity: 0.7
+            opacity: 0.8
         });
 
         const cloudsLayer = L.tileLayer(`https://{s}.tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=${apiKey}`, {
             attribution: '&copy; <a href="https://www.openweathermap.org/copyright">OpenWeatherMap</a> contributors',
             maxZoom: 19,
-            opacity: 0.7
+            opacity: 0.8
         });
 
         const pressureLayer = L.tileLayer(`https://{s}.tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=${apiKey}`, {
             attribution: '&copy; <a href="https://www.openweathermap.org/copyright">OpenWeatherMap</a> contributors',
             maxZoom: 19,
-            opacity: 0.7
+            opacity: 0.8
         });
 
         const layers = {

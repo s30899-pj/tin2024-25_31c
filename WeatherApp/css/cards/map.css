@@ -1,8 +1,8 @@
 #weather-map {
-    height: 485px;
+    height: 620px;
     width: 92%;
     border-radius: 30px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     margin: 0 auto;
     display: block;
@@ -17,12 +17,12 @@
     background-color: rgba(255, 99, 71, 0.8);
     color: white;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: bold;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     border: 2px solid white;
@@ -35,16 +35,16 @@
     top: 10px;
     left: 10px;
     background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 5px 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     display: none;
     z-index: 1000;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .layer-control label {
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .hamburger {
@@ -55,28 +55,28 @@
     border: none;
     border-radius: 50%;
     color: white;
-    padding: 4px;
+    padding: 5px;
     cursor: pointer;
     z-index: 1000;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 35px;
     transition: all 0.3s ease;
 }
 
 .hamburger div {
-    width: 16px;
-    height: 2px;
+    width: 20px;
+    height: 3px;
     background-color: white;
     transition: all 0.3s ease;
     margin: 2px 0;
 }
 
 .hamburger.open div:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
+    transform: translateY(7px) rotate(45deg);
     position: relative;
 }
 
@@ -85,6 +85,6 @@
 }
 
 .hamburger.open div:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
+    transform: translateY(-7px) rotate(-45deg);
     position: relative;
 }

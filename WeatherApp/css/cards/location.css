@@ -1,37 +1,39 @@
 #card-location .result {
-    padding-top: 20px;
+    padding-top: 30px;
     text-align: center;
 }
 
 #card-location .result .name {
     font-weight: bold;
-    font-size: large;
+    font-size: 27px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 #card-location .temperature img {
-    width: 150px;
+    width: 220px;
     filter: drop-shadow(
-            0 10px 50px #000
+            0 20px 50px #000
     );
+    image-rendering: smooth;
 }
 
 #card-location .temperature figcaption {
-    font-size: 3em;
+    font-size: 3.5em;
 }
 
 #card-location .description {
-    padding: 10px 0 30px;
+    padding: 15px 0 40px;
+    font-size: larger;
 }
 
 #card-location .result ul {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 15px;
 
 }
 
@@ -39,7 +41,7 @@
     background-color: #fd8b61;
     color: #fff;
     border-radius: 10px;
-    padding: 20px 10px;
+    padding: 30px 15px;
     background-image: linear-gradient(
             to bottom,
             transparent 50%,
@@ -51,9 +53,9 @@
 }
 
 #card-location .result li i {
-    font-size: 2em;
+    font-size: 4em;
     display: block !important;
-    margin: 20px 0;
+    margin: 25px 0;
 }
 
 #card-location .result li:nth-child(2) {

@@ -19,13 +19,13 @@ body {
 }
 
 main {
-    width: 300px;
-    height: 550px;
-    min-height: 300px;
+    width: 400px;
+    height: 700px;
+    min-height: 400px;
     background: #f7f7f7;
-    border-radius: 30px 30px 0 0;
-    box-shadow: 0 30px 50px #5553;
-    padding: 25px;
+    border-radius: 40px 40px 0 0;
+    box-shadow: 0 40px 70px #5553;
+    padding: 30px;
     box-sizing: border-box;
 }
 
@@ -79,16 +79,16 @@ footer.error {
 
 footer {
     position: relative;
-    width: 300px;
-    height: 70px;
+    width: 400px;
+    height: 90px;
     background: #f7f7f7;
-    border-radius: 0 0 30px 30px;
-    box-shadow: 0 30px 50px #5553;
+    border-radius: 0 0 40px 40px;
+    box-shadow: 0 40px 70px #5553;
     box-sizing: border-box;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: -20px;
+    margin-top: -30px;
     font-family: "Poppins", sans-serif;
 }
 
@@ -98,11 +98,12 @@ footer .icon, .text {
 
 footer .text {
     user-select: none;
+    font-size: 1em;
 }
 
 footer ul {
     display: flex;
-    width: 250px;
+    width: 350px;
     padding: 0;
     justify-content: space-between;
 }
@@ -110,8 +111,8 @@ footer ul {
 footer ul li {
     position: relative;
     list-style: none;
-    width: 60px;
-    height: 70px;
+    width: 70px;
+    height: 80px;
     z-index: 1;
 }
 
@@ -130,19 +131,19 @@ footer a .icon {
     position: relative;
     display: block;
     line-height: 85px;
-    font-size: 1.5em;
+    font-size: 2em;
     text-align: center;
     transition: 0.5s;
 }
 
 footer li.active a .icon {
-    transform: translateY(-35px);
+    transform: translateY(-40px);
 }
 
 footer a .text {
     position: absolute;
     font-weight: 800;
-    font-size: 0.7em;
+    font-size: 0.8em;
     letter-spacing: 0.05em;
     transition: 0.5s;
     opacity: 0;
@@ -156,9 +157,10 @@ footer li.active a .text {
 
 footer ul li.indicator {
     position: absolute;
+    left: 30px;
     top: -26%;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     background: tomato;
     box-sizing: border-box;
     border-radius: 50%;
@@ -182,7 +184,7 @@ footer li.active~.indicator {
     transform: translateX(var(--x));
 }
 
-footer li:nth-child(2).active ~.indicator {--x: 50px;}
-footer li:nth-child(3).active ~.indicator {--x: 100px;}
-footer li:nth-child(4).active ~.indicator {--x: 150px;}
-footer li:nth-child(5).active ~.indicator {--x: 200px;}
+footer li:nth-child(2).active ~.indicator {--x: 70px;}
+footer li:nth-child(3).active ~.indicator {--x: 140px;}
+footer li:nth-child(4).active ~.indicator {--x: 210px;}
+footer li:nth-child(5).active ~.indicator {--x: 280px;}
